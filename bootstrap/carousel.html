@@ -1,0 +1,111 @@
+<html>
+<head>
+	<script src="lib/jquery-1.11.1.min.js"></script>
+	<script src="lib/bootstrap/js/bootstrap.min.js"></script>
+	
+	<link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css"></link>
+	
+	<script>
+		$(function() {
+			$('.lf-slider').on('click','.control-right.active', function() {
+				var slider = $(this).closest('.lf-slider');
+				var visible = slider.find(".entry:visible");
+				// hide the first visible entry
+				visible.first().hide("slide");
+				// show the first hidden entry just after the last visible one
+				visible.last().next().show();
+				
+				if($(this).prev().is(":visible")) {
+					$(this).removeClass("active")
+				}
+				$('.control-left').addClass('active');
+			});
+
+			$('.lf-slider').on('click','.control-left.active', function() {
+				var slider = $(this).closest('.lf-slider');
+				var visible = slider.find(".entry:visible");
+				// hide the last visible entry
+				visible.last().hide();
+				// show the first hidden entry just after the last visible one
+				visible.first().prev().show("slide");
+				
+				if($(this).next().is(":visible")) {
+					$(this).removeClass("active")
+				}
+				$('.control-right').addClass('active');
+			});
+			
+			$('.lf-slider .entry:gt( 3 )').hide();
+			$('.control-left').removeClass('active');
+			$('.control-right').addClass('active');
+		})
+	</script>	
+</head>
+<body>
+	<div class="container">
+	<h1>Carousel demo</h1>
+
+	<div class="well">
+	<div class="row lf-slider">
+		<div class="control-left col-sm-2">
+			<span class="glyphicon glyphicon-chevron-left"></span>
+	    </div>
+		
+		<div class="entry col-sm-2">
+			<div class="thumbnail">
+				<img src="media/sheep-alex.png" class="img-responsive" alt="...">
+				<div class="caption">
+					<p>Le mouton d'Alex 1</p>
+				</div>
+			</div>
+	    </div>
+	    
+	    <div class="entry col-sm-2">
+			<div class="thumbnail">
+				<img src="media/sheep-alex.png" class="img-responsive" alt="...">
+				<div class="caption">
+					<p>Le mouton d'Alex 2</p>
+				</div>
+			</div>
+	    </div>
+	    <div class="entry col-sm-2">
+			<div class="thumbnail">
+				<img src="media/sheep-alex.png" class="img-responsive" alt="...">
+				<div class="caption">
+					<p>Le mouton d'Alex 3</p>
+				</div>
+			</div>
+	    </div>
+	    <div class="entry col-sm-2">
+			<div class="thumbnail">
+				<img src="media/sheep-alex.png" class="img-responsive" alt="...">
+				<div class="caption">
+					<p>Le mouton d'Alex 4</p>
+				</div>
+			</div>
+	    </div>
+	    <div class="entry col-sm-2">
+			<div class="thumbnail">
+				<img src="media/sheep-alex.png" class="img-responsive" alt="...">
+				<div class="caption">
+					<p>Le mouton d'Alex 5</p>
+				</div>
+			</div>
+	    </div>
+	    <div class="entry col-sm-2">
+			<div class="thumbnail">
+				<img src="media/sheep-alex.png" class="img-responsive" alt="...">
+				<div class="caption">
+					<p>Le mouton d'Alex 6</p>
+				</div>
+			</div>
+	    </div>
+	    
+	    <div class="control-right col-sm-2">
+			<span class="glyphicon glyphicon-chevron-right"></span>
+	    </div>
+	</div>
+</div>
+</div>
+</body>
+</html>
